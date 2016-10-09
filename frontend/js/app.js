@@ -17,11 +17,11 @@ var showPage = function(newPage) {
   currentPage.on('navigation.goto', function(e, route) {
     Router.navigate(route);
   });
-}
+};
 
 window.onload = function() {
 
-  body = document.querySelector('body .container');
+  body = document.querySelector('body .container2');
   userModel = new UserModel();
   userModel.fetch(function(error, result) {
     Router
@@ -98,4 +98,5 @@ window.onload = function() {
     .check();
   });
 
-}
+  
+};

@@ -5,5 +5,8 @@ module.exports = Ractive.extend({
   onrender: function() {
     var model = new FooterModel();
     model.bindComponent(this).fetch();
+  },
+    onconstruct: function() {
+    this.data.isLogged = !!userModel.isLogged();
   }
 });

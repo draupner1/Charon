@@ -2,7 +2,7 @@ var path = require('path');
 var gulp = require('gulp');
 var less = require('gulp-less');
 var rename = require("gulp-rename");
-var minifyCSS = require('gulp-minify-css');
+var minifyCSS = require('gulp-clean-css');
 var browserify = require('gulp-browserify');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
@@ -14,12 +14,8 @@ var onError = function (err) {
 
 gulp.task('css', function() {
   return gulp.src('./frontend/less/styles.less')
-  .pipe(plumber({
-    errorHandler: onError
-  }))
-  .pipe(less({
-    paths: [ path.join(__dirname, 'frontend/less', 'includes') ]
-  }))
+  .pipe(plumber({ errorHandler: onError }))
+  .pipe(less({  paths: [ path.join(__dirname, 'frontend/less', 'includes') ] }))
   .pipe(gulp.dest('./static/css'))
   .pipe(minifyCSS({keepBreaks:true}))
   .pipe(rename({suffix: '.min'}))
@@ -36,10 +32,8 @@ var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 
 gulp.task('js', ['templates'], function() {
-  return gulp.src(['./frontend/js/app.js'])
-  .pipe(plumber({
-    errorHandler: onError
-  }))
+  return gulp.src(['./frontend/js/app.js', './frontend/js/init.js'])
+  .pipe(plumber({ errorHandler: onError }))
   .pipe(browserify())
   .pipe(gulp.dest('./static/js'))
   .pipe(uglify())
@@ -52,17 +46,13 @@ var tap = require('gulp-tap');
 
 gulp.task('templates', function() {
   return gulp.src('./frontend/tpl/**/*.html')
-  .pipe(plumber({
-    errorHandler: onError
-  }))
+  .pipe(plumber({ errorHandler: onError }))
   .pipe(tap(function(file, t) {
     var precompiled = Ractive.parse(file.contents.toString());
     precompiled = JSON.stringify(precompiled);
     file.contents = new Buffer('module.exports = ' + precompiled);
   }))
-  .pipe(rename(function(path) {
-    path.extname = '.js';
-  }))
+  .pipe(rename(function(path) { path.extname = '.js'; }))
   .pipe(gulp.dest('./frontend/tpl'))
 });
 

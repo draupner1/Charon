@@ -1,8 +1,9 @@
 <header>
   <navigation></navigation>
 </header>
-<div class="hero">
+
   {{#if posting === true}}
+  <div class="hero">
     <form enctype="multipart/form-data" method="post">
       <h3>What is on your mind?</h3>
       {{#if error && error != ''}}
@@ -11,8 +12,12 @@
       {{#if success && success != ''}}
         <div class="success">{{{success}}}</div>
       {{/if}}
-      <label>Text</label>
-      <textarea value="{{text}}"></textarea>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="text" type="text" value="{{text}}" class="validate">
+          <label for="text">Text</label>
+        </div>
+      </div>
       {{#if friends.length > 0}}
         <p>Tag friends:
         {{#each friends:index}}
@@ -23,12 +28,28 @@
         {{/each}}
         </p>
       {{/if}}
-      <input type="file" name="file" />
-      <input type="button" value="Post" on-click="post" />
+      <!--input type="file" name="file" /-->
+      <div class="row">
+      <div class="col s6">
+      <div class="file-field input-field">
+        <div class="waves-effect waves-light blue lighten-1 btn">
+          <span>file</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" value="{{file}}">
+        </div>
+      </div>
+      </div>
+      <div class="col s6">
+        <a class="waves-effect waves-light blue lighten-1 btn" on-click="post"><i class="material-icons right">send</i>Post</a>
+      </div>
+      </div>
+      <!--input type="button" value="Post" on-click="post" /-->
     </form>
     {{#each posts:index}}
       <div class="content-item">
-        <h2>{{posts[index].userName}}</h2>
+        <h5>{{posts[index].userName}}</h5>
         <p>{{posts[index].text}}</p>
         {{#if posts[index].via}}
         <small>via {{posts[index].via}}</small>
@@ -41,9 +62,11 @@
           </p>
         {{/if}}
         <p>
-        <input type="button" value="Like ({{posts[index].numberOfLikes}})" on-click="like:{{posts[index].id}}" />
+        <!--input type="button" value="Like ({{posts[index].numberOfLikes}})" on-click="like:{{posts[index].id}}" /-->
+        <a class="waves-effect waves-light blue lighten-1 btn" on-click="like:{{posts[index].id}}">Like ({{posts[index].numberOfLikes}})</a>
         {{#if !posts[index].ownPost}}
-        <input type="button" value="Share" on-click="share:{{posts[index].id}}" />
+        <!--input type="button" value="Share" on-click="share:{{posts[index].id}}" /-->
+        <a class="waves-effect waves-light blue lighten-1 btn" on-click="share:{{posts[index].id}}">Share</a>
         {{/if}}
         </p>
         {{#if posts[index].file}}
@@ -52,8 +75,99 @@
         {{/if}}
       </div>
     {{/each}}
+  </div>
   {{else}}
-    <h1>IP Management & Administration</h1>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center blue-text text-lighten-2">Charon</h1>
+        <div class="row center">
+          <h5 class="header col s12 light blue-text">A modern responsive front-end framework based on Material Design</h5>
+        </div>
+        <div class="row center">
+          <a href="/register" class="btn-large waves-effect waves-light blue lighten-1">Register</a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="static/uploads/background1.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text darken-3"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text darken-3"><i class="material-icons">group</i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text darken-3"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light blue-text">A modern responsive front-end framework based on Material Design</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="static/uploads/background2.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send blue-text darken-3"></i></h3>
+          <h4>Contact Us</h4>
+          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light blue-text">A modern responsive front-end framework based on Material Design</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="static/uploads/background3.jpg" alt="Unsplashed background img 3"></div>
+  </div>
   {{/if}}
-</div>
+
 <appfooter />

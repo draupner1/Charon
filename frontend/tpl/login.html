@@ -11,11 +11,24 @@
   {{#if success && success != ''}}
     <div class="success">{{{success}}}</div>
   {{else}}
-    <label for="email">Email</label>
-    <input type="text" id="email" value="{{email}}" />
-    <label for="password">Password</label>
-    <input type="password" id="password" value="{{password}}" />
-    <input type="button" value="login" on-click="login" />
+    <div class="row">
+    <div class="s6">
+      <div class="input-field">
+        <input type="text" id="email" value="{{email}}" />
+        <label for="email" class="active">Email</label>
+      </div></div>
+      <div class="row s6">
+      <div class="input-field">
+        <input type="password" id="password" value="{{password}}" />
+        <label for="password" class="active">Password</label>
+      </div></div>
+      <div class="row">
+      <div class="input-field">
+        <div class ="row"></div>
+        <a class="waves-effect waves-light blue lighten-1 btn" on-click="login"><i class="material-icons right">send</i>login</a>
+      </div></div>
+    </div>
+    <div class ="row"></div>
   {{/if}}
 </form>
 <appfooter />

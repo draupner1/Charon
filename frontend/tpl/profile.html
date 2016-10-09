@@ -19,9 +19,12 @@
   <label for="password">Change password</label>
   <input type="password" id="password" value="{{password}}" />
 
-  <input type="button" value="update" on-click="updateProfile" />
-  <input type="button" value="delete account" on-click="deleteProfile" class="right attention"/>
-
+  <!--input type="button" value="update" on-click="updateProfile" /-->
+  <a class="waves-effect waves-light blue lighten-1 btn" on-click="updateProfile">update</a>
+  <!--input type="button" value="delete account" on-click="deleteProfile" class="right attention"/-->
+  <a class="waves-effect waves-light blue lighten-1 btn right" on-click="deleteProfile">delete account</a>
+        
+  <div class ="row"></div>
 </form>
 {{#if friends.length > 0}}
   <div class="hero">

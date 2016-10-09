@@ -4,8 +4,8 @@ var ContentModel = require('../models/Content');
 module.exports = Ractive.extend({
   template: require('../../tpl/pages'),
   components: {
-    navigation: require('../views/Navigation'),
-    appfooter: require('../views/Footer')
+    navigation: require('../view/Navigation'),
+    appfooter: require('../view/Footer')
   },
   data: { },
   onrender: function() {

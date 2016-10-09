@@ -3,8 +3,8 @@ var Friends = require('../models/Friends');
 module.exports = Ractive.extend({
   template: require('../../tpl/profile'),
   components: {
-    navigation: require('../views/Navigation'),
-    appfooter: require('../views/Footer')
+    navigation: require('../view/Navigation'),
+    appfooter: require('../view/Footer')
   },
   data: {
     friends: []

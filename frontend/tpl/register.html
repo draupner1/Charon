@@ -11,15 +11,32 @@
   {{#if success && success != ''}}
     <div class="success">{{{success}}}</div>
   {{else}}
-    <label for="first-name">First name</label>
-    <input type="text" id="first-name" value="{{firstName}}"/>
-    <label for="last-name">Last name</label>
-    <input type="text" id="last-name" value="{{lastName}}" />
-    <label for="email">Email</label>
-    <input type="text" id="email" value="{{email}}" />
-    <label for="password">Password</label>
-    <input type="password" id="password" value="{{password}}" />
-    <input type="button" value="register" on-click="register" />
+        <div class="s10">
+          <div class="input-field">
+            <input id="first-name" type="text" value="{{firstName}}"/>
+            <label for="first-name">First name</label>
+          </div>
+
+          <div class="input-field">
+            <input type="text" id="last-name" value="{{lastName}}" />
+            <label for="last-name">Last name</label>
+          </div>
+          
+          <div class="input-field">
+            <input type="text" id="email" value="{{email}}" class="validate"/>
+            <label for="email">Email</label>
+          </div>
+          
+          <div class="input-field">
+            <input type="password" id="password" value="{{password}}" />
+            <label for="password" >Password</label>
+          </div>
+          
+          <div class ="row"></div>
+          <a class="waves-effect waves-light blue lighten-1 btn" on-click="register"><i class="material-icons right">send</i>register</a>
+        
+        </div>
+        <div class ="row"></div>
   {{/if}}
 </form>
 <appfooter />

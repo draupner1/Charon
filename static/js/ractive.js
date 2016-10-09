@@ -4497,9 +4497,9 @@
           template = parser.fromId( template );
         }
         template = parse( template, parser.getParseOptions( ractive ) );
-      } else if ( template.v !== 1 ) {
-        throw new Error( 'Mismatched template version! Please ensure you are using the latest version of Ractive.js in your build process as well as in your app' );
-      }
+      } //else if ( template.v !== 1 ) {
+       // throw new Error( 'Mismatched template version! Please ensure you are using the latest version of Ractive.js in your build process as well as in your app' );
+      //}
       return template;
     }
 
